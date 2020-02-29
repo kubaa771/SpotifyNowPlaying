@@ -53,7 +53,7 @@ class AppDelegate: NSObject, NSApplicationDelegate{
     
     func applicationDidFinishLaunching(_ notification: Notification) {
     
-        NSAppleEventManager.shared().setEventHandler(self, andSelector:#selector(self.handleGetURL(event:withReplyEvent:)), forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
+        NSAppleEventManager.shared().setEventHandler(self, andSelector:#selector(self.handleGetURL(event:withReplyEvent:)), forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))    
         
         
     }
@@ -101,6 +101,8 @@ class AppDelegate: NSObject, NSApplicationDelegate{
             if code != nil {
                 //loginDelegate.loginSuccess(code: code!)
                 NotificationCenter.default.post(name: NotificationNames.callbackNotification.notification, object: code)
+            } else {
+                //error getting code - create alert
             }
    
            
