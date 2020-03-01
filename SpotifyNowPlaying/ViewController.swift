@@ -78,6 +78,17 @@ class ViewController: NSViewController, OAuthSwiftURLHandlerType{
             for artist in artists {
                 guard let artistName = artist["name"] as? String else { return }
                 artistsNamesString.append(contentsOf: " " + artistName)
+                
+                if artists.count > 1 {
+                    if artist == artists.first {
+                        artistsNamesString.append(contentsOf: ",")
+                    } else if artist == artists.last {
+                        print("do nothing")
+                    } else {
+                        artistsNamesString.append(contentsOf: ",")
+                    }
+                }
+               
             }
             
             changeButtonText(artistName: artistsNamesString, songName: songName ?? "")
