@@ -53,7 +53,10 @@ class AppDelegate: NSObject, NSApplicationDelegate{
     
     func applicationDidFinishLaunching(_ notification: Notification) {
     
-        NSAppleEventManager.shared().setEventHandler(self, andSelector:#selector(self.handleGetURL(event:withReplyEvent:)), forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))    
+        NSAppleEventManager.shared().setEventHandler(self, andSelector:#selector(self.handleGetURL(event:withReplyEvent:)), forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
+        
+        let vc = ViewController()
+        vc.firstLaunch()
         
         
     }

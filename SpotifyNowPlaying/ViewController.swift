@@ -23,12 +23,11 @@ class ViewController: NSViewController, OAuthSwiftURLHandlerType{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(self.handleRedirect(_:)), name: NotificationNames.callbackNotification.notification, object: nil)
+        
     }
 
     override func viewDidAppear() {
-        spotifyManager.setAuthorizeHandler(vc: self)
-        spotifyManager.authorizeScope()
+        
     }
     
 
@@ -36,6 +35,12 @@ class ViewController: NSViewController, OAuthSwiftURLHandlerType{
         didSet {
         // Update the view, if already loaded.
         }
+    }
+    
+    func firstLaunch() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.handleRedirect(_:)), name: NotificationNames.callbackNotification.notification, object: nil)
+        spotifyManager.setAuthorizeHandler(vc: self)
+        spotifyManager.authorizeScope()
     }
 
 
